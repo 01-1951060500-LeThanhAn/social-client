@@ -67,10 +67,10 @@ function ModalShare({ setIsModalOpen }) {
 
             <p className="font-semibold text-lg mt-2">{newUser.username}</p>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 mr-5 md:mr-0">
             <input
               placeholder={"What's in your mind " + newUser.username + "?"}
-              className="outline-none bg-slate-100 px-2 ml-3 py-2 w-[450px] mr-[40px]"
+              className="outline-none bg-slate-100 px-2 ml-3 py-2 md:w-[450px] w-full mr-[40px]"
               ref={desc}
             />
           </div>
