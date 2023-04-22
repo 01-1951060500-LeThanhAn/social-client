@@ -44,7 +44,7 @@ const ProfileRightbar = ({ follower, followings, user, posts }) => {
   };
   return (
     <>
-      <div className="px-6 bg-white h-auto pt-1 py-4 shadow-sm shadow-slate-500/50">
+      <div className="px-3 lg:px-8 bg-white h-auto pt-1 py-4 shadow-sm shadow-slate-500/50">
         <h4 className="mt-8 text-2xl font-bold">Intro</h4>
         <p>
           You should learn from your competitor, but never copy. Copy and you
@@ -87,12 +87,12 @@ const ProfileRightbar = ({ follower, followings, user, posts }) => {
             <div className="text-xl font-semibold mb-3">Photo</div>
             {images.length > 0 ? (
               <>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-4 md:grid-cols-3 gap-4">
                   {images.map((post, index) => (
                     <div key={index} className="image">
                       <img
                         className="w-28 h-28 object-cover"
-                        src={`${linkImages}/${post.img}`}
+                        src={post?.img}
                         alt=""
                       />
                     </div>

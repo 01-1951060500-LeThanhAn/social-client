@@ -92,7 +92,7 @@ function Post({ post, posts, setPosts }) {
   return (
     <>
       {!loading && (
-        <div className="bg-white shadow-sm shadow-slate-500/50 w-[102%] md:w-full h-auto lg:h-[480px] mt-5">
+        <div className="bg-white shadow-sm shadow-slate-500/50 w-[102%]  2xl:w-full h-auto lg:h-[480px] mt-5">
           <div className="">
             <div className="flex justify-between items-center mx-3 mt-4">
               <div className="flex items-center mt-2 mb-3">

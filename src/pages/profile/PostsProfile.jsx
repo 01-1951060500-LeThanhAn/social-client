@@ -48,7 +48,7 @@ const PostsProfile = ({ user, username, posts, follower, followings }) => {
             followings={followings}
           />
         </div>
-        <div className="w-full 2xl:w-1/2 md:w-1/2 2xl:ml-24 mt-8">
+        <div className="w-full 2xl:w-3/5 md:w-1/2 2xl:ml-24 mt-8">
           <MyFeed
             sharePosts={sharePosts}
             postData={postData}

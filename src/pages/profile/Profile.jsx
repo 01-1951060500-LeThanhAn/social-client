@@ -111,7 +111,7 @@ export default function Profile() {
             )}
           </div>
 
-          <div className="2xl:mx-48 mx-6 mt-4 md:mx-4">
+          <div className="2xl:mx-56 mx-6 mt-4 md:mx-4">
             <Tabs className="md:ml-5 lg:ml-8">
               <TabPane tab="Posts" key="tab-a">
                 <PostsProfile

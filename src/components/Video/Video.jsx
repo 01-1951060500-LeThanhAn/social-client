@@ -94,7 +94,7 @@ function Video({ post, videos, setVideos }) {
   return (
     <>
       {!loading && (
-        <div className="bg-white shadow-sm shadow-slate-500/50 w-[102%] h-1/2 lg:h-[480px] mt-5">
+        <div className="bg-white shadow-sm shadow-slate-500/50 w-[102%] md:w-full h-1/2 lg:h-[480px] mt-5">
           <div className="">
             <div className="flex justify-between items-center mx-4 mt-4">
               <div className="flex items-center mt-2 mb-3">
