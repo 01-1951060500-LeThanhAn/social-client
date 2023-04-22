@@ -80,7 +80,7 @@ const Messenger = () => {
   useEffect(() => {
     const fetchAllMessages = async () => {
       try {
-        const res = await baseApi.get(`/api/message/${chatCurrent._id}`);
+        const res = await baseApi.get(`/api/message/${chatCurrent?._id}`);
         setMessages(res.data);
       } catch (error) {
         console.log(error);
@@ -158,7 +158,7 @@ const Messenger = () => {
   return (
     <>
       <Topbar />
-      <div className="flex flex-col md:flex-row h-full mt-3">
+      <div className="flex flex-col md:flex-row  mt-3 bg-slate-100 h-auto">
         <div className="2xl:flex-[3]  md:block md:flex-[5] lg:flex-[3] ">
           <div className="p-[10px]  h-full">
             <div className="w-full">
@@ -172,7 +172,7 @@ const Messenger = () => {
               />
 
               {conversations.map((conver) => (
-                <div key={conver._id} onClick={() => setChatCurrent(conver)}>
+                <div key={conver?._id} onClick={() => setChatCurrent(conver)}>
                   <Conversation
                     conversations={conversations}
                     online={checkUserOnline(conver)}

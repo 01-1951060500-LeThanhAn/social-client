@@ -1,23 +1,29 @@
 import { MdPermMedia } from "react-icons/md";
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { baseApi } from "../../api/index";
 import { toast } from "react-toastify";
 import useFakeUser from "../../hooks/useFakeUser";
-import { AuthContext } from "../../context/AuthContext";
-import { addPost } from "../../context/AuthAction";
+
+import axios from "axios";
 
 function ModalShare({ setIsModalOpen }) {
   const { newUser } = useFakeUser();
-  const { dispatch } = useContext(AuthContext);
   const desc = useRef();
   const [file, setFile] = useState(null);
-
+  const [loading, setLoading] = useState(false);
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    if (!file || !desc) {
+    if (!file && !desc) {
       return toast.error("Vui lòng thêm ảnh và tiêu đề");
+    }
+
+    if (!desc) {
+      return toast.error("Vui lòng  tiêu đề");
+    }
+    if (!file) {
+      return toast.error("Vui lòng thêm ảnh ");
     }
 
     try {
@@ -27,20 +33,28 @@ function ModalShare({ setIsModalOpen }) {
       };
 
       const data = new FormData();
-      const fileName = Date.now() + file?.name;
-
-      data.append("name", fileName);
       data.append("file", file);
-      newPost.img = fileName;
 
-      await baseApi.post("/api/upload", data);
-      dispatch(addPost(newPost));
+      data.append("upload_preset", "videos");
+      data.append("cloud_name", "dkw090gsn");
+
+      const res = await axios.post(
+        `https://api.cloudinary.com/v1_1/dkw090gsn/image/upload`,
+        data
+      );
+
+      const newImg = {
+        ...newPost,
+        img: res.data?.url,
+      };
+
+      await baseApi.post("/api/posts", newImg);
+
       setFile(null);
-      window.location.reload();
-      toast.success("Create post successfully");
+      return window.location.reload();
     } catch (err) {
+      toast.error("Create post failed");
       setFile(null);
-
       console.log(err);
     }
 
@@ -70,7 +84,7 @@ function ModalShare({ setIsModalOpen }) {
           <div className="mt-3 mr-5 md:mr-0">
             <input
               placeholder={"What's in your mind " + newUser.username + "?"}
-              className="outline-none bg-slate-100 px-2 ml-3 py-2 md:w-[450px] w-full mr-[40px]"
+              className="outline-none rounded-full bg-slate-100 px-2 ml-3 py-2 md:w-[450px] w-full mr-[40px]"
               ref={desc}
             />
           </div>

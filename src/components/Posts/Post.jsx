@@ -77,9 +77,8 @@ function Post({ post, posts, setPosts }) {
       setLoading(true);
 
       try {
-        await baseApi.delete(`/api/posts/${post._id}`);
+        const res = await baseApi.delete(`/api/posts/${post._id}`);
 
-        setPosts(posts.filter((id) => id !== post._id));
         return toast.success("Remove post successfully");
       } catch (error) {
         setLoading(false);
@@ -144,10 +143,10 @@ function Post({ post, posts, setPosts }) {
             <div className="postCenter">
               <span className="ml-5">{post?.desc}</span>
 
-              <Link to={`/details/${post._id}/${post.userId}`}>
+              <Link to={`/details/${post?._id}/${post?.userId}`}>
                 <img
-                  className="w-full mt-4 lg:h-[300px] h-[270px] object-cover"
-                  src={`http://social-main-ann.onrender.com/images/${post.img}`}
+                  className="w-full mt-4 lg:h-[300px] h-[270px] object-contain"
+                  src={`${post?.img}`}
                   alt=""
                 />
               </Link>

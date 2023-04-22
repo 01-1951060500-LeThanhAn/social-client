@@ -100,7 +100,7 @@ const PostDetail = () => {
     <>
       <TopBar />
 
-      <div className="xl:flex lg:flex md:flex">
+      <div className="xl:flex bg-slate-100 lg:flex md:flex">
         <dic className="2xl:w-1/4 hidden 2xl:block">
           <SideBar />
         </dic>
@@ -124,7 +124,7 @@ const PostDetail = () => {
                   <div className="ml-2 flex flex-col">
                     <span className=" font-bold">{user.username}</span>
                     <span className="text-slate-400">
-                      {moment(details.createdAt).fromNow()}
+                      {moment(details?.createdAt).fromNow()}
                     </span>
                   </div>
                 </div>
@@ -168,8 +168,8 @@ const PostDetail = () => {
                   )}
                 </form>
                 <img
-                  className="w-full mt-4 h-[350px] object-cover"
-                  src={`${linkImages}/${details.img}`}
+                  className="w-full mt-4 h-[350px] object-contain"
+                  src={details?.img}
                   alt=""
                 />
               </div>

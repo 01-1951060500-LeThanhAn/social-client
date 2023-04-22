@@ -6,7 +6,7 @@ import ModalShare from "./ModalShare";
 import useFakeUser from "../../hooks/useFakeUser";
 import ModalShareVideos from "./ModalShareVideos";
 
-export default function Share() {
+export default function Share({ loading, setLoading }) {
   const { newUser } = useFakeUser();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVideos, setIsModalVideos] = useState(false);
@@ -60,7 +60,11 @@ export default function Share() {
                 </Button>
 
                 <Modal open={isModalOpen} onCancel={handleCancel} footer={null}>
-                  <ModalShare setIsModalOpen={setIsModalOpen} />
+                  <ModalShare
+                    loading={loading}
+                    setLoading={setLoading}
+                    setIsModalOpen={setIsModalOpen}
+                  />
                 </Modal>
               </div>
 

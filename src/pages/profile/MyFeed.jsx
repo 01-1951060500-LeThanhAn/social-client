@@ -19,13 +19,13 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
 
   useEffect(() => {
     const fetchSharePostsUser = async () => {
-      const res = await getUser(postData.userId);
+      const res = await getUser(postData?.userId);
 
       setUser(res.data);
     };
 
     fetchSharePostsUser();
-  }, [postData.userId]);
+  }, [postData?.userId]);
 
   return (
     <div className=" mb-8">
@@ -46,7 +46,7 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
             <div className="">
               <div className="flex justify-between items-center mx-4 mt-4">
                 <div className="flex items-center mt-2 mb-3">
-                  <Link to={`/profile/${postData.userId}`}>
+                  <Link to={`/profile/${postData?.userId}`}>
                     <img
                       className="w-12 h-12 object-cover rounded-full"
                       src={
@@ -60,7 +60,7 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
                   <div className="ml-2 flex flex-col">
                     <span className=" font-bold">{user?.username}</span>
                     <span className="text-slate-400">
-                      {moment(postData.createdAt).fromNow()}
+                      {moment(postData?.createdAt).fromNow()}
                     </span>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
               <div className="postCenter">
                 <span className="ml-5">{postData?.desc}</span>
 
-                <Link to={`/details/${postData._id}/${postData.userId}`}>
+                <Link to={`/details/${postData?._id}/${postData?.userId}`}>
                   <img
                     className="w-full mt-4 lg:h-[300px]  object-cover"
                     src={`${linkImages}/${postData?.img}`}

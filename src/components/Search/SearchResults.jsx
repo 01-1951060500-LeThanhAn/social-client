@@ -70,7 +70,7 @@ const SearchResults = () => {
       <Topbar />
       <div className="bg-white h-full">
         <div className="p-6">
-          <div className="ml-4 flex 2xl:justify-center items-center">
+          <div className="ml-4 flex md:justify-center items-center">
             <Link
               className={`${
                 type === "post" ? "bg-blue-600 text-white" : ""

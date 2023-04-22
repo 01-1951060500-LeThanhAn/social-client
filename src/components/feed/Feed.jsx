@@ -12,9 +12,7 @@ const { TabPane } = Tabs;
 export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
   const [videos, setVideos] = useState([]);
-
   const [loading, setLoading] = useState(false);
-
   const fetchPosts = async () => {
     try {
       setLoading(true);
@@ -25,9 +23,9 @@ export default function Feed({ username }) {
           return new Date(p2.createdAt) - new Date(p1.createdAt);
         })
       );
-
       setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
@@ -51,7 +49,7 @@ export default function Feed({ username }) {
 
     const timing = setTimeout(() => {
       fetchVideos();
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timing);
@@ -63,8 +61,9 @@ export default function Feed({ username }) {
 
     const timing = setTimeout(() => {
       fetchPosts();
+
       setLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timing);
@@ -75,7 +74,7 @@ export default function Feed({ username }) {
     <>
       <div className="flex-[10] bg-slate-100 h-full mr-3">
         <div className=" py-[20px] px-[20px]">
-          <Share />
+          <Share loading={loading} setLoading={setLoading} />
           <Tabs className="">
             <TabPane tab="Posts" key="tab-a">
               {!loading ? (

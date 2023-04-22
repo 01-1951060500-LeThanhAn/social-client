@@ -35,7 +35,7 @@ function App() {
         baseColor="rgb(224, 186, 186)"
         highlightColor="rgba(0,0,0,0.1)"
       >
-        <div className="App">
+        <div className="App bg-slate-100 h-screen">
           <AuthContextProvider>
             <Routes>
               <Route exact path="/" element={<Home />}></Route>

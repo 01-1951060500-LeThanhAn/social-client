@@ -30,10 +30,10 @@ const InputMessage = ({
 
   return (
     <>
-      <div className="relative z-40">
+      <div className="relative z-40 ">
         <form
           onSubmit={handleSubmit}
-          className="absolute bottom-0 left-0 w-full"
+          className="absolute bottom-0  left-0 w-full"
         >
           {file ? (
             <div className="">
@@ -49,7 +49,7 @@ const InputMessage = ({
             </div>
           ) : null}
 
-          <div className="flex relative bg-white pb-10 -mt-8 justify-between  items-center">
+          <div className="flex relative bg-slate-100 pb-10 -mt-8 justify-between  items-center">
             <div className="w-full ">
               <input
                 className=" w-full px-2 py-2 border border-blue-600 rounded-full outline-none

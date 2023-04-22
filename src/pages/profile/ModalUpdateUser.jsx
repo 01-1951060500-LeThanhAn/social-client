@@ -34,6 +34,7 @@ const ModalUpdateUser = ({ setShow, user }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           setPicture({ ...picture, profilePicture: data.url });
         })
         .catch((err) => {
@@ -48,9 +49,9 @@ const ModalUpdateUser = ({ setShow, user }) => {
 
   const handleUpload = async (e) => {
     await updatedProfile(picture._id, {
-      profilePicture: picture.profilePicture,
-      username: data.username,
-      email: data.email,
+      profilePicture: picture?.profilePicture,
+      username: data?.username,
+      email: data?.email,
     });
 
     setShow(false);

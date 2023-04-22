@@ -52,9 +52,6 @@ export default function Topbar() {
         </form>
       </div>
       <div className="w-1/3 mr-8 justify-end 2xl:mr-12 md:mr-8 lg:mr-4 flex items-center text-white">
-        <div className="text-xl mr-3 cursor-pointer">
-          <BsFillBellFill />
-        </div>
         <p className="mr-3">{newUser.username}</p>
 
         <TippyMenu>
