@@ -111,7 +111,7 @@ const AllPostSave = ({ post, setSavePosts, savePosts }) => {
               <Link to={`/details/${data._id}/${data.userId}`}>
                 <img
                   className="w-full mt-4 lg:h-[300px]  object-cover"
-                  src={`${linkImages}/${data.img}`}
+                  src={data?.img}
                   alt=""
                 />
               </Link>
