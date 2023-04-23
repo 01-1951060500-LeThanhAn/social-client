@@ -3,6 +3,8 @@ import { useRef } from "react";
 import { toast } from "react-toastify";
 import { registerUserApi } from "../../api/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { linkImages } from "../../api";
 export default function Register() {
   const username = useRef();
@@ -30,6 +32,42 @@ export default function Register() {
     }
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+      comfirm_password: "",
+    },
+    onSubmit: async (value) => {
+      try {
+        await registerUserApi(value);
+        navigate("/login");
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .required("Trường này là bắt buộc!")
+        .min(6, "Tên phải có ít nhất 6 kí tự!")
+        .max(20, "Tên không đc vượt quá 20 kí tự!"),
+      email: Yup.string()
+        .required("Trường này là bắt buộc!")
+        .matches(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          "Email không đúng định dạng!"
+        ),
+      password: Yup.string()
+        .max(10, "Mật khẩu không đc vượt quá 10 kí tự!")
+        .required("Trường này là bắt buộc!")
+        .min(6, "Mật khẩu có ít nhất 6 kí tự!"),
+      comfirm_password: Yup.string()
+        .required("Trường này là bắt buộc!")
+        .oneOf([Yup.ref("password"), null], "Mật khẩu không trùng khớp!"),
+    }),
+  });
+
   return (
     <div
       style={{
@@ -47,36 +85,56 @@ export default function Register() {
         <div className="flex flex-col justify-center">
           <form
             className="h-auto px-5 flex justify-between flex-col"
-            onSubmit={handleClick}
+            onSubmit={formik.handleSubmit}
           >
             <input
+              onChange={formik.handleChange}
+              value={formik.username}
+              name="name"
               placeholder="Username"
-              required
-              ref={username}
               className="h-12 border-2 px-3 outline-none mt-4 border-slate-300"
             />
+            {formik.errors.name && (
+              <p className="text-xs text-red-500 mt-2">{formik.errors.name}</p>
+            )}
             <input
-              placeholder="Email"
-              required
-              ref={email}
+              onChange={formik.handleChange}
+              value={formik.email}
+              name="email"
+              placeholder="EX: an@gmail.com"
               className="h-12 border-2 px-3 outline-none mt-4 border-slate-300"
-              type="email"
             />
+            {formik.errors.email && (
+              <p className="text-xs text-red-500 mt-2">{formik.errors.email}</p>
+            )}
             <input
+              onChange={formik.handleChange}
+              value={formik.password}
+              name="password"
               placeholder="Password"
               required
-              ref={password}
               className="h-12 border-2 px-3 outline-none mt-4 border-slate-300"
               type="password"
-              minLength="6"
             />
+            {formik.errors.password && (
+              <p className="text-xs text-red-500 mt-2">
+                {formik.errors.password}
+              </p>
+            )}
             <input
+              onChange={formik.handleChange}
+              value={formik.comfirm_password}
+              name="comfirm_password"
               placeholder="Password Again"
               required
-              ref={passwordAgain}
               className="h-12 border-2 px-3 outline-none mt-4 border-slate-300"
               type="password"
             />
+            {formik.errors.comfirm_password && (
+              <p className="text-xs text-red-500 mt-2">
+                {formik.errors.comfirm_password}
+              </p>
+            )}
             <button className="h-12 bg-blue-600 mt-3 text-white" type="submit">
               Sign Up
             </button>

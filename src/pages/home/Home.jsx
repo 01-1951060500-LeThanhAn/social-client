@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <TopBar />
-      <div className="">
+      <div className="mt-16">
         <div className="flex justify-between bg-[#f0f2f5]">
           <div className="lg:w-1/4 lg:block hidden">
             <SideBar />

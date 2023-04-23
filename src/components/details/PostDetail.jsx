@@ -100,7 +100,7 @@ const PostDetail = () => {
     <>
       <TopBar />
 
-      <div className="xl:flex bg-slate-100 lg:flex md:flex">
+      <div className="xl:flex pt-16 bg-slate-100 lg:flex md:flex">
         <dic className="2xl:w-1/4 hidden 2xl:block">
           <SideBar />
         </dic>
@@ -168,7 +168,7 @@ const PostDetail = () => {
                   )}
                 </form>
                 <img
-                  className="w-full mt-4 h-[350px] object-contain"
+                  className="w-full mt-4 h-[330px] h-md:[350px] object-contain"
                   src={details?.img}
                   alt=""
                 />
@@ -194,22 +194,24 @@ const PostDetail = () => {
             id={id}
             fetchComments={fetchComments}
           />
-          {listComments.length > 0 ? (
-            listComments.map((item, index) => (
-              <CommentItem
-                item={item}
-                user={user}
-                userId={userId}
-                setUser={setUser}
-                deleteComment={deleteComment}
-                key={index}
-              />
-            ))
-          ) : (
-            <div className="mb-8 flex items-center justify-center">
-              <h1>Không có nhận xét nào gần đây!</h1>
-            </div>
-          )}
+          <div className="pb-4">
+            {listComments.length > 0 ? (
+              listComments.map((item, index) => (
+                <CommentItem
+                  item={item}
+                  user={user}
+                  userId={userId}
+                  setUser={setUser}
+                  deleteComment={deleteComment}
+                  key={index}
+                />
+              ))
+            ) : (
+              <div className=" mb-12 flex items-center justify-center">
+                <h1>Không có nhận xét nào gần đây!</h1>
+              </div>
+            )}
+          </div>
         </div>
 
         <div

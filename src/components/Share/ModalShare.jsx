@@ -4,7 +4,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { baseApi } from "../../api/index";
 import { toast } from "react-toastify";
 import useFakeUser from "../../hooks/useFakeUser";
-
+import { CircularProgress } from "react-cssfx-loading";
 import axios from "axios";
 
 function ModalShare({ setIsModalOpen }) {
@@ -25,6 +25,8 @@ function ModalShare({ setIsModalOpen }) {
     if (!file) {
       return toast.error("Vui lòng thêm ảnh ");
     }
+
+    setLoading(true);
 
     try {
       const newPost = {
@@ -57,7 +59,7 @@ function ModalShare({ setIsModalOpen }) {
       setFile(null);
       console.log(err);
     }
-
+    setLoading(false);
     setIsModalOpen(false);
   };
 
@@ -129,7 +131,15 @@ function ModalShare({ setIsModalOpen }) {
               className="bg-blue-600 text-white py-2  w-full mr-8"
               type="submit"
             >
-              <p className="font-semibold text-xl">Post</p>
+              <p className="font-semibold text-xl">
+                {loading ? (
+                  <div className="flex justify-center items-center ">
+                    <CircularProgress color="white" duration="2s" />
+                  </div>
+                ) : (
+                  "Post"
+                )}
+              </p>
             </button>
           </form>
         </div>

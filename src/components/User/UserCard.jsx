@@ -10,7 +10,10 @@ const UserCard = ({ data }) => {
             <Link to={`/profile/${data._id}`}>
               <img
                 className="w-16 h-16 rounded-full object-cover"
-                src={data?.profilePicture}
+                src={
+                  data?.profilePicture ||
+                  `https://robohash.org/${data?.username}`
+                }
                 alt=""
               />
             </Link>

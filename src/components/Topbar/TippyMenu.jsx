@@ -10,7 +10,7 @@ const TippyMenu = ({ children }) => {
   const { newUser } = useFakeUser();
 
   const handleLogOut = () => {
-    if (window.confirm("You sure want to logout ? ")) {
+    if (window.confirm("You sure want to logout ?")) {
       localStorage.removeItem("profile");
       localStorage.removeItem("token");
     }

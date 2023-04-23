@@ -6,10 +6,11 @@ import { baseApi } from "../../api/index";
 
 import useFakeUser from "../../hooks/useFakeUser";
 import axios from "axios";
+import { CircularProgress } from "react-cssfx-loading";
 
 function ModalShareVideos({ setIsModalVideos }) {
   const { newUser } = useFakeUser();
-
+  const [loading, setLoading] = useState(false);
   const desc = useRef();
   const [videoFile, setVideoFile] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
@@ -56,6 +57,8 @@ function ModalShareVideos({ setIsModalVideos }) {
       toast.error("Vui lòng chọn video");
     }
 
+    setLoading(true);
+
     try {
       const newPost = {
         userId: newUser._id,
@@ -73,8 +76,6 @@ function ModalShareVideos({ setIsModalVideos }) {
         data
       );
 
-      console.log(res.data);
-
       const newVideo = {
         ...newPost,
         videos: res.data?.url,
@@ -87,6 +88,7 @@ function ModalShareVideos({ setIsModalVideos }) {
       toast.error("upload video lỗi");
       console.log(error);
     }
+    setLoading(false);
     setIsModalVideos(false);
   };
 
@@ -163,7 +165,15 @@ function ModalShareVideos({ setIsModalVideos }) {
               className="bg-blue-600 text-white py-2  w-full mr-8"
               type="submit"
             >
-              <p className="font-semibold text-xl">Post</p>
+              <p className="font-semibold text-xl">
+                {loading ? (
+                  <div className="flex justify-center items-center ">
+                    <CircularProgress color="white" duration="2s" />
+                  </div>
+                ) : (
+                  "Post"
+                )}
+              </p>
             </button>
           </form>
         </div>

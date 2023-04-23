@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
-
+import { CircularProgress } from "react-cssfx-loading";
 import { toast } from "react-toastify";
 import { postCommentApi } from "../../api/comment";
 import useFakeUser from "../../hooks/useFakeUser";
@@ -32,7 +32,7 @@ const InputComment = ({ id, fetchComments, listComments, setListComments }) => {
   };
   return (
     <>
-      <div className="comments mt-5  mb-12">
+      <div className="comments mt-5  mb-8">
         <form
           action=""
           onSubmit={(e) =>
@@ -47,7 +47,10 @@ const InputComment = ({ id, fetchComments, listComments, setListComments }) => {
             <div className="avatar">
               <img
                 className="w-12 h-12 object-cover rounded-full mr-2"
-                src={newUser.profilePicture}
+                src={
+                  newUser.profilePicture ||
+                  `https://robohash.org/${newUser?.username}`
+                }
                 alt=""
               />
             </div>
@@ -63,7 +66,15 @@ const InputComment = ({ id, fetchComments, listComments, setListComments }) => {
                 type="submit"
                 className="text-lg pr-4 shadow-sm shadow-slate-500/50 bg-white py-[13px] cursor-pointer rounded-r-full"
               >
-                {commentLoading ? "Sending" : <AiOutlineSend />}
+                {commentLoading ? (
+                  <CircularProgress
+                    width={20}
+                    height={20}
+                    style={{ marginLeft: "5px" }}
+                  />
+                ) : (
+                  <AiOutlineSend />
+                )}
               </button>
             </div>
           </div>

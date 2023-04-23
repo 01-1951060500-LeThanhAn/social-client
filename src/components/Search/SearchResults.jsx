@@ -58,7 +58,7 @@ const SearchResults = () => {
     const timing = setTimeout(() => {
       fetchSearchResults();
       setLoading(false);
-    }, 1500);
+    }, 1000);
 
     return () => {
       clearTimeout(timing);
@@ -68,7 +68,7 @@ const SearchResults = () => {
   return (
     <>
       <Topbar />
-      <div className="bg-white h-full">
+      <div className="bg-white mt-16 h-full">
         <div className="p-6">
           <div className="ml-4 flex md:justify-center items-center">
             <Link
@@ -118,10 +118,15 @@ const SearchResults = () => {
               </div>
             ) : (
               <>
-                <div className=" ">
-                  <div className="bg-slate-100 h-screen">
+                <div className="flex justify-center items-center ">
+                  {/* <div className="bg-slate-100 h-screen">
                     <p className="text-center text-2xl mt-1/2">No Resuts</p>
-                  </div>
+                  </div> */}
+                  <img
+                    className="w-1/2 object-contain h-[600px]"
+                    src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=740&t=st=1682239200~exp=1682239800~hmac=65a820291ee1d42f7c3d91c49b2c68655b3cf507f7c3263a70e1bf5b5d896682"
+                    alt=""
+                  />
                 </div>
               </>
             )}

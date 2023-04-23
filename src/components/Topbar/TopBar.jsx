@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useInnerWidth from "../../hooks/useInnerWidth";
 import { AiOutlineSearch } from "react-icons/ai";
-import { BsFillBellFill } from "react-icons/bs";
+
 import { useState } from "react";
 import useFakeUser from "../../hooks/useFakeUser";
 import TippyMenu from "./TippyMenu";
@@ -22,7 +22,7 @@ export default function Topbar() {
   };
 
   return (
-    <div className="flex justify-between relative items-center bg-blue-600 z-50 h-16 sticky top-0">
+    <div className="flex justify-between w-full fixed items-center bg-blue-600 z-50 h-16  top-0">
       <div className="2xl:w-1/3 w-1/5">
         <Link to="/" style={{ textDecoration: "none" }}>
           <span className="text-2xl text-white font-bold ml-6 mr-4">LTA</span>

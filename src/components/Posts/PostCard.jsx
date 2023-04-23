@@ -34,7 +34,7 @@ const PostCard = ({ data }) => {
             <div className="">
               <img
                 className="w-full px-3 py-3 h-64 object-cover"
-                src={`${linkImages}/${data?.img}`}
+                src={data?.img}
                 alt=""
               />
             </div>

@@ -158,7 +158,7 @@ const Messenger = () => {
   return (
     <>
       <Topbar />
-      <div className="flex flex-col md:flex-row  mt-3 bg-slate-100 h-auto">
+      <div className="flex flex-col mt-16 md:flex-row bg-slate-100 h-auto">
         <div className="2xl:flex-[3]  md:block md:flex-[5] lg:flex-[3] ">
           <div className="p-[10px]  h-full">
             <div className="w-full">

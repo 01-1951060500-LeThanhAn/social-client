@@ -81,7 +81,7 @@ function Video({ post, videos, setVideos }) {
         await deleteVideo(post._id);
 
         setVideos(videos.filter((id) => id !== post._id));
-        return toast.success("Remove post successfully");
+        return toast.success("Remove video successfully");
       } catch (error) {
         setLoading(false);
         console.log(error);
