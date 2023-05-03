@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const baseApi = axios.create({
-  baseURL: "https://social-main-ann.onrender.com",
+  baseURL: "https://server-social-61kc.onrender.com",
 });
 
-export const linkImages = "https://social-main-ann.onrender.com/images";
+export const linkImages = "https://server-social-61kc.onrender.com/images";
