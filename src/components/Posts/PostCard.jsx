@@ -1,5 +1,4 @@
 import React from "react";
-import { linkImages } from "../../api";
 import { Link } from "react-router-dom";
 import moment from "moment";
 const PostCard = ({ data }) => {

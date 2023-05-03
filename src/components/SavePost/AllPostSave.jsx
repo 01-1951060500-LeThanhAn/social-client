@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { baseApi, linkImages } from "../../api";
+import { baseApi } from "../../api";
 
 import { BsTrashFill } from "react-icons/bs";
 import { MdOutlineInsertComment } from "react-icons/md";

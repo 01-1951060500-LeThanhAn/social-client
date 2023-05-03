@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 import { toast } from "react-toastify";
 import { registerUserApi } from "../../api/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,30 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { linkImages } from "../../api";
 export default function Register() {
-  const username = useRef();
-  const email = useRef();
-  const password = useRef();
-  const passwordAgain = useRef();
   const navigate = useNavigate();
-  const handleClick = async (e) => {
-    e.preventDefault();
-    if (passwordAgain.current.value !== password.current.value) {
-      toast.error("Password not same");
-    } else {
-      const user = {
-        username: username.current.value,
-        email: email.current.value,
-        password: password.current.value,
-      };
-      try {
-        await registerUserApi(user);
-
-        navigate("/login");
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
 
   const formik = useFormik({
     initialValues: {

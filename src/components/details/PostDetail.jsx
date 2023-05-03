@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { baseApi, linkImages } from "../../api";
+import { baseApi } from "../../api";
 import { useState } from "react";
 
 import { AiOutlineLike, AiOutlineEdit } from "react-icons/ai";
@@ -79,7 +79,7 @@ const PostDetail = () => {
     setEdit(true);
 
     try {
-      const res = await editPost(id, desc);
+      await editPost(id, desc);
 
       fetchDetailsPosts(id);
       toast.success("Updated successfully");

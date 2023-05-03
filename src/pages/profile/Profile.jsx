@@ -1,7 +1,7 @@
 import TopBar from "../../components/Topbar/TopBar";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { baseApi, linkImages } from "../../api";
+import { baseApi } from "../../api";
 import { Tabs } from "antd";
 import { AiOutlineEdit } from "react-icons/ai";
 import PostsProfile from "./PostsProfile";
@@ -70,7 +70,7 @@ export default function Profile() {
             <div className="h-[350px] relative flex justify-center items-center">
               <img
                 className="2xl:w-[80%]  w-full lg:w-[90%] h-[320px] object-cover"
-                src={`${linkImages}/person/sea.jpg`}
+                src={`https://www.searchenginejournal.com/wp-content/uploads/2021/09/16-reasons-why-social-media-is-important-to-your-company-616d3200e6dc6-sej.png`}
                 alt=""
               />
               <img
