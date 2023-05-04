@@ -1,4 +1,4 @@
-import { baseApi } from ".";
+import { baseApi } from "./index";
 
 export const loginUserApi = (data) => {
   return baseApi.post("/api/auth/login", data);

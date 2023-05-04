@@ -3,27 +3,28 @@ import { registerUserApi } from "../../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { linkImages } from "../../api";
+
 export default function Register() {
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      username: "",
       email: "",
       password: "",
       comfirm_password: "",
     },
     onSubmit: async (value) => {
       try {
-        await registerUserApi(value);
+        const res = await registerUserApi(value);
+        console.log(res.data);
         navigate("/login");
       } catch (error) {
         toast.error(error.response.data.message);
       }
     },
     validationSchema: Yup.object({
-      name: Yup.string()
+      username: Yup.string()
         .required("Trường này là bắt buộc!")
         .min(6, "Tên phải có ít nhất 6 kí tự!")
         .max(20, "Tên không đc vượt quá 20 kí tự!"),
@@ -46,7 +47,7 @@ export default function Register() {
   return (
     <div
       style={{
-        backgroundImage: `url(${linkImages}/person/space.png)`,
+        backgroundImage: `url("https://img.freepik.com/free-vector/cartoon-galaxy-background_23-2148975152.jpg?w=1060&t=st=1683207587~exp=1683208187~hmac=15e5aa09e3b54eb01392b7768ee810533c650439f3d685d036d1224775f6e13f")`,
         backgroundSize: "cover",
       }}
       className="w-full h-[100vh] bg-slate-200 flex justify-center items-center"
@@ -65,12 +66,15 @@ export default function Register() {
             <input
               onChange={formik.handleChange}
               value={formik.username}
-              name="name"
+              name="username"
+              required
               placeholder="Username"
               className="h-12 border-2 px-3 outline-none mt-4 border-slate-300"
             />
-            {formik.errors.name && (
-              <p className="text-xs text-red-500 mt-2">{formik.errors.name}</p>
+            {formik.errors.username && (
+              <p className="text-xs text-red-500 mt-2">
+                {formik.errors.username}
+              </p>
             )}
             <input
               onChange={formik.handleChange}
