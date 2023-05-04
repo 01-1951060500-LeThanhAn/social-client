@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Profile from "./pages/profile/Profile";
 import Home from "./pages/home/Home";
 import PostDetail from "./components/details/PostDetail";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import Messenger from "./pages/Messenger/Messenger";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -16,17 +16,23 @@ import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 import VideoDetails from "./components/details/VideoDetails";
 import SearchResults from "./components/Search/SearchResults";
-
+import { useJwt } from "react-jwt";
 function App() {
   const navigate = useNavigate();
+  const { isExpired } = useJwt(localStorage.getItem("token"));
 
   useEffect(() => {
-    if (localStorage.getItem("token") === "undefined") {
-      navigate("/login");
-      localStorage.removeItem("profile");
-      localStorage.removeItem("token");
-    }
-  }, []);
+    const checkToken = () => {
+      if (isExpired === true) {
+        localStorage.removeItem("tokenAdmmin");
+        localStorage.removeItem("admin");
+        navigate("/login");
+        toast.error("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại");
+      }
+    };
+
+    checkToken();
+  }, [isExpired]);
 
   return (
     <>
