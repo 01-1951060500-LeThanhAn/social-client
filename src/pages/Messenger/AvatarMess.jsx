@@ -20,7 +20,7 @@ const AvatarMess = ({ chatCurrent, userId }) => {
 
   return (
     <>
-      {windowSize.width > 700 && (
+      {windowSize.width > 800 && (
         <div className=" px-2 pb-3 flex justify-between items-center ">
           <div className=" py-3 flex items-center text-lg">
             <img

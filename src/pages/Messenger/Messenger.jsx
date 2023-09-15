@@ -14,7 +14,6 @@ import AvatarMess from "./AvatarMess";
 
 import InputMessage from "./InputMessage";
 import { toast } from "react-toastify";
-import { message } from "antd";
 
 const Messenger = () => {
   const { newUser } = useFakeUser();

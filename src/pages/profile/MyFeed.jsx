@@ -78,7 +78,7 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
                 <Link to={`/details/${postData?._id}/${postData?.userId}`}>
                   <img
                     className="w-full mt-4 lg:h-[300px]  object-cover"
-                    src={`${linkImages}/${postData?.img}`}
+                    src={`${postData?.img}`}
                     alt=""
                   />
                 </Link>

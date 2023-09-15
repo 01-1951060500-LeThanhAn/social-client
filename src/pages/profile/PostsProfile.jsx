@@ -30,7 +30,7 @@ const PostsProfile = ({ user, username, posts, follower, followings }) => {
   useEffect(() => {
     const fetchSharePostsId = async () => {
       const res = await baseApi.get(`/api/posts/${sharePosts}`);
-
+      console.log(res.data);
       setPostData(res.data);
     };
 

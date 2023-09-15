@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { AiOutlineMail } from "react-icons/ai";
-import { baseApi, linkImages } from "../../api";
+import { baseApi } from "../../api";
 import { toast } from "react-toastify";
 import useFakeUser from "../../hooks/useFakeUser";
 const ProfileRightbar = ({ follower, followings, user, posts }) => {

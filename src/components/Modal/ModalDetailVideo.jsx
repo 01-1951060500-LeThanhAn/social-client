@@ -75,7 +75,7 @@ const ModalDetailVideo = ({ setModalVideo, post, handleVideo, videoRef }) => {
   return (
     <>
       <Overlay setShow={setModalVideo}>
-        <div className="bg-white w-full mx-4 h-[90%] lg:h-3/5 lg:w-[80%] 2xl:w-3/5 2xl:h-4/5 relative">
+        <div className="bg-white w-full mx-4 h-[90%] lg:h-auto lg:w-[80%] 2xl:w-3/5 2xl:h-auto relative">
           <div
             onClick={() => setModalVideo(false)}
             className="absolute text-xl z-50 cursor-pointer top-3 right-3"
