@@ -15,7 +15,7 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { BsFillTrashFill } from "react-icons/bs";
 import moment from "moment";
 
-function Post({ post, posts, setPosts }) {
+function Post({ post }) {
   const [like, setLike] = useState(post.likes?.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});

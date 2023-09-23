@@ -10,7 +10,6 @@ import { AiFillLike } from "react-icons/ai";
 import { MdOutlineInsertComment } from "react-icons/md";
 import { RiShareForwardLine } from "react-icons/ri";
 import moment from "moment";
-import { linkImages } from "../../api";
 
 const MyFeed = ({ username, posts, postData, sharePosts }) => {
   const { newUser } = useFakeUser();
@@ -40,7 +39,7 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
         )}
       </div>
 
-      {sharePosts.length > 0 && (
+      {sharePosts && sharePosts.length > 0 ? (
         <div className="">
           <div className="bg-white shadow-sm shadow-slate-500/50 w-full h-auto lg:h-[480px] mt-5">
             <div className="">
@@ -118,7 +117,7 @@ const MyFeed = ({ username, posts, postData, sharePosts }) => {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

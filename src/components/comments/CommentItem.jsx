@@ -7,17 +7,13 @@ import { AiOutlineLike } from "react-icons/ai";
 import useFakeUser from "../../hooks/useFakeUser";
 import { baseApi } from "../../api";
 import moment from "moment";
-import ReplyComment from "./ReplyComment";
-import ListRepComment from "./ListRepComment";
 
-const CommentItem = ({ item, deleteComment, id, fetchComments }) => {
+const CommentItem = ({ item, deleteComment }) => {
   const { newUser } = useFakeUser();
 
   const [like, setLike] = useState(item.likesComment?.length);
   const [isLiked, setIsLiked] = useState(false);
   const [showReply, setShowReply] = useState(false);
-  const [listRepComment, setListRepComment] = useState([]);
-  const [showReplyItem, setShowReplyItem] = useState(false);
 
   const handleDeleteComment = async (id) => {
     if (window.confirm("You sure delete this comment")) {
@@ -43,15 +39,6 @@ const CommentItem = ({ item, deleteComment, id, fetchComments }) => {
     setIsLiked(item.likesComment.includes(newUser._id));
   }, [item.likesComment, newUser._id]);
 
-  useEffect(() => {
-    const fetchRepComments = async () => {
-      const res = await getReplyCommentApi(item._id);
-      console.log(res.data);
-      setListRepComment(res.data?.results);
-    };
-
-    fetchRepComments();
-  }, [item._id]);
   return (
     <>
       <div className="mb-12">

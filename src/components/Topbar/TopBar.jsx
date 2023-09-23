@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useInnerWidth from "../../hooks/useInnerWidth";
 import { AiOutlineSearch } from "react-icons/ai";
-
+import Logo from "../../images/social.png";
 import { useState } from "react";
 import useFakeUser from "../../hooks/useFakeUser";
 import TippyMenu from "./TippyMenu";
@@ -22,10 +22,10 @@ export default function Topbar() {
   };
 
   return (
-    <div className="flex justify-between w-full fixed items-center bg-blue-600 z-50 h-16  top-0">
+    <div className="flex z-50 justify-between w-full fixed items-center shadow-md bg-white h-16  top-0">
       <div className="2xl:w-1/3 w-1/5">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="text-2xl text-white font-bold ml-6 mr-4">LTA</span>
+          <img className="w-24 h-24" src={Logo} alt="Social Logo" />
         </Link>
       </div>
       <div
@@ -33,7 +33,7 @@ export default function Topbar() {
       "
       >
         <form onSubmit={handleSubmit}>
-          <div className="w-full relative flex items-center rounded-sm">
+          <div className=" bg-gray-300 rounded-lg relative flex items-center">
             <div className="absolute right-4 text-2xl cursor-pointer">
               <AiOutlineSearch />
             </div>
@@ -46,13 +46,13 @@ export default function Topbar() {
                   ? `Search for friend, post or video`
                   : "Search user..."
               }
-              className="w-[100%] rounded-lg outline-none py-2 pl-4"
+              className="w-[100%] bg-gray-200 rounded-lg outline-none py-2 pl-4"
             />
           </div>
         </form>
       </div>
       <div className="w-1/3 mr-8 justify-end 2xl:mr-12 md:mr-8 lg:mr-4 flex items-center text-white">
-        <p className="mr-3">{newUser.username}</p>
+        <p className="mr-3 text-black ">{newUser.username}</p>
 
         <TippyMenu>
           <img
