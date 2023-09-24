@@ -17,6 +17,7 @@ import moment from "moment";
 
 function Post({ post }) {
   const [like, setLike] = useState(post.likes?.length);
+  console.log(post);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const [desc, setDesc] = useState(post?.desc);
@@ -166,10 +167,11 @@ function Post({ post }) {
               </div>
 
               <div className="postBottomRight">
-                <span className="flex items-center text-lg mr-1">
+                <span className="flex justify-center items-center text-lg mr-1">
                   <span className="text-2xl cursor-pointer">
                     <MdOutlineInsertComment />{" "}
                   </span>
+                  <span className="ml-2">{post.commentsCount}</span>
                 </span>
               </div>
               <div className="postBottomRight">

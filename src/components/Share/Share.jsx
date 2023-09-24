@@ -42,7 +42,7 @@ export default function Share({ loading, setLoading }) {
             <Button className="border-none" onClick={showModal}>
               <input
                 placeholder={"What's in your mind " + newUser.username + "?"}
-                className="w-full outline-none"
+                className="2xl:w-[300px] w-[250px] outline-none"
               />
             </Button>
           </div>

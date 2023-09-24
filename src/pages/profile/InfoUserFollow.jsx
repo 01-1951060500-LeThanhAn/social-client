@@ -49,7 +49,7 @@ const InfoUserFollow = ({ item }) => {
           <div className="">
             <Link to={`/profile/${item._id}`}>
               <img
-                className="bg-slate-200 w-20 h-20 rounded-full object-cover"
+                className="bg-slate-200 w-12 h-12 rounded-full object-cover"
                 src={
                   item.profilePicture || `https://robohash.org/${item.username}`
                 }
