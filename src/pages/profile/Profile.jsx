@@ -91,7 +91,7 @@ export default function Profile() {
             {user._id === newUser._id ? (
               <div
                 onClick={() => setShow(true)}
-                className="absolute  flex items-center 2xl:top-[440px] top-[403px] bg-blue-600 text-white px-3 py-1 text-lg cursor-pointer right-5 md:right-10 lg:right-14 2xl:right-80"
+                className="absolute z-20 flex items-center 2xl:top-[440px] top-[403px] bg-blue-600 text-white px-3 py-1 text-lg cursor-pointer right-5 md:right-10 lg:right-14 2xl:right-80"
               >
                 <div className="text-xl mr-1">
                   <AiOutlineEdit />
@@ -101,7 +101,7 @@ export default function Profile() {
             ) : (
               <div
                 onClick={fetchConversation}
-                className="absolute flex items-center 2xl:top-[440px] top-[403px] bg-blue-600 text-white px-3 py-1 text-lg cursor-pointer right-5 md:right-10 lg:right-14 2xl:right-80"
+                className="absolute z-20 flex items-center 2xl:top-[440px] top-[403px] bg-blue-600 text-white px-3 py-1 text-lg cursor-pointer right-5 md:right-10 lg:right-14 2xl:right-80"
               >
                 <div className="text-xl mr-1">
                   <AiOutlineEdit />
