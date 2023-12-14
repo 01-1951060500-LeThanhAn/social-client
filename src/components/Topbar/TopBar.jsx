@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useInnerWidth from "../../hooks/useInnerWidth";
 import { AiOutlineSearch } from "react-icons/ai";
 import Logo from "../../images/social.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFakeUser from "../../hooks/useFakeUser";
 import TippyMenu from "./TippyMenu";
 import useSearchParams from "../../hooks/useSearchParams";

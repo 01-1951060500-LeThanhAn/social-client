@@ -9,7 +9,7 @@ import Video from "../Video/Video";
 
 const { TabPane } = Tabs;
 
-export default function Feed({ username }) {
+export default function Feed({ username, user, socket }) {
   const [posts, setPosts] = useState([]);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -80,9 +80,9 @@ export default function Feed({ username }) {
               {!loading ? (
                 posts.map((post) => (
                   <Post
+                    nofiuser={user}
+                    socket={socket}
                     key={post._id}
-                    loading={loading}
-                    setLoading={setLoading}
                     post={post}
                     posts={posts}
                     setPosts={setPosts}

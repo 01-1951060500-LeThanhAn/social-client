@@ -17,7 +17,6 @@ import moment from "moment";
 
 function Post({ post }) {
   const [like, setLike] = useState(post.likes?.length);
-  console.log(post);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const [desc, setDesc] = useState(post?.desc);
@@ -38,7 +37,7 @@ function Post({ post }) {
     fetchUser();
   }, [post]);
 
-  const likeHandler = () => {
+  const likeHandler = (type) => {
     try {
       baseApi.put("/api/posts/" + post._id + "/like", {
         userId: newUser._id,
@@ -155,7 +154,7 @@ function Post({ post }) {
             <div className="flex justify-between items-center mt-5 mx-5 pb-8">
               <div className="flex items-center">
                 <div
-                  onClick={() => likeHandler(1)}
+                  onClick={likeHandler}
                   className={` ${
                     isLiked ? "text-blue-600" : ""
                   } text-2xl cursor-pointer `}

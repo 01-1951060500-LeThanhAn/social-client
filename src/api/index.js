@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const baseApi = axios.create({
-  baseURL: "https://server-social-7msn.onrender.com",
+  baseURL: "https://social-server-kappa.vercel.app",
 });
 
-export const linkImages = "https://server-social-7msn.onrender.com/images";
+export const linkImages = "https://social-server-kappa.vercel.app/images";
